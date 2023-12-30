@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>React under hood</title>
+	</head>
+	<body>
+		<div id="buttonParent"></div>
+		<script>
+			//global variable
+			let state = {
+				count: 0,
+			};
+
+			function onButtonPress() {
+				state.count += 1;
+				buttonComponentReRender();
+			}
+
+			function buttonComponentReRender() {
+				const parentButton = document.getElementById("buttonParent");
+				parentButton.innerHTML = "";
+				const component = buttonComponent(state.count);
+				parentButton.appendChild(component);
+			}
+
+			function buttonComponent(count) {
+				const button = document.createElement("button");
+				button.innerHTML = `Counter ${count}`;
+				button.setAttribute("onclick", `onButtonPress()`);
+				return button;
+			}
+
+			//first this function is called
+			buttonComponentReRender();
+		</script>
+	</body>
+</html>

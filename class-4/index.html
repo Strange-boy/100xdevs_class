@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<style>
+			.container {
+				background-color: red;
+				padding: 10px;
+				margin: 10px;
+			}
+		</style>
+		<title>Document</title>
+	</head>
+	<body>
+        <script>
+            function onPopulateDiv(){
+                const a = document.getElementById("first-number").value;
+                const b = document.getElementById("second-number").value;
+                
+                // using fetch in js
+                fetch("https://sum-server.100xdevs.com/sum?a=" + a + "&b=" + b);
+
+                // const element = document.getElementById("final-sum");
+                // console.log(element);
+                // element.innerHTML = parseInt(a) + parseInt(b);
+            }
+        </script>
+		<input id="first-number" type="text" placeholder="First number"></input> <br></br>
+        <input id="second-number" placeholder="Second number"></input> <br></br>
+        <button onclick="onPopulateDiv()">Calculate sum</button> <br></br>
+        <div id="final-sum"></div>
+	</body>
+</html>
+
